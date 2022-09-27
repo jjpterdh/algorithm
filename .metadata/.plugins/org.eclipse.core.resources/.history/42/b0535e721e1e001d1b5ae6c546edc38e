@@ -1,0 +1,48 @@
+package al;
+
+import java.util.Scanner;
+
+public class rod_cutting {
+	public static void main(String[] args) {
+		
+		int[] p= {1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
+		Scanner sc = new Scanner(System.in);
+		
+		int n= sc.nextInt();
+		
+		
+		
+		
+		System.out.println(rod_cut(n, p));
+		
+		sc.close();
+	}
+	
+	
+	public static int rod_cut(int n, int[] p) {
+		
+		
+		int[] r= new int[p.length+1]; 
+		
+		
+		r[0]=0;
+		
+		for(int i=1;i<=n;i++) {
+			int max = Integer.MIN_VALUE;
+			
+			for(int j=1;j<i;j++) {
+				max= Math.max(max, p[j]+r[i-j-1]);
+			}
+			r[i]=max;
+			
+		}
+		
+		
+		return r[n];
+	}
+	
+	
+}
+
+
+

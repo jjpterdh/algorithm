@@ -1,13 +1,16 @@
+
+
 def dfs(x,y):
     if x<0 or x>=n or y<0 or y>=m:
         return False
-    if graph[y][x]==0:
-        graph[y][x]=1
-        dfs(x,y-1)
-        dfs(x,y+1)
-        dfs(x-1,y)
-        dfs(x+1,y)
+    if graph[x][y]==0: 
+        graph[x][y]=1
+        dfs(x,y-1) # 상
+        dfs(x,y+1) # 하
+        dfs(x-1,y) # 좌
+        dfs(x+1,y) # 우
         return True
+    
     
     return False
 
@@ -20,5 +23,10 @@ for i in range(n):
     graph.append(list(map(int,input())))
 
 
+count=0
+for i in range(n):
+    for j in range(m):
+        if dfs(i,j):
+            count+=1
 
-dfs(0,0)
+print(count)

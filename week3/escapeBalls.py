@@ -1,5 +1,6 @@
 # 삼성 기출
 # 공 탈출2
+# R B 이동 미구현
 from collections import deque
 
 n, m = map(int, input().split())

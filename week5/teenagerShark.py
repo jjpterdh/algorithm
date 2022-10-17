@@ -24,9 +24,6 @@ for i in range(4):
 dy = [-1, -1, 0, 1, 1, 1, 0, -1]
 dx = [0, -1, -1, -1, 0, 1, 1, 1]
 
-
-
-
 def fish_move(shark_x, shark_y, new_board, directions):
     n = 1
     # 리스트 복사
@@ -44,7 +41,7 @@ def fish_move(shark_x, shark_y, new_board, directions):
                     if update_board[i][j] == n: # with order (small -> big)
                         # try all the directions
                         n += 1
-                        # direction = directions[i][j]-1
+
                         direction = directions[i][j]
                         for k in range(direction, direction+9):
                             # 이동할 자리 확인
@@ -111,8 +108,6 @@ def dfs(x,y, board, directions):
     eaten_fish.pop()
 
     return max(sum,sum2)
-
-
 
 
 #initial shark x,y

@@ -1,43 +1,69 @@
 from collections import deque
-n,m = map(int , input().split())
+# input
+n,m=map(int, input().split())
 
-graph=[]
-for i in range(n):
-    graph.append(list(map(int, input())))
+# 상 하 좌 우
+dx=[0,0,1,-1]
+dy=[-1,1,0,0]
+
+# graph=[
+#     [1,0,1,0,1,0],
+#     [1,1,1,1,1,1],
+#     [0,0,0,0,0,1],
+#     [1,1,1,1,1,1],
+#     [1,1,1,1,1,1]
+# ]
+
+graph=[
+    [1,1,0],
+    [0,1,0],
+    [0,1,1]
+]
+
+# graph=[]
+# for i in range(n):
+#     graph.append(map(int, input()))
+
+def solution(graph, n, m):
+    
+    
+    count=bfs(graph, n,m)
 
 
+    
+    return count
 
-def bfs(y,x):
+
+def bfs(graph, n, m):
     queue=deque()
-    queue.append([y,x])
+    queue.append((0,0))
     
-    dx=[1,-1,0, 0]
-    dy=[0,0,1,-1]
 
-
-    
-    
     while queue:
-        pos=queue.popleft()
-        x=pos[1]
-        y=pos[0]
-        
-        
-        if pos[0]==n-1 and pos[1]==m-1:
-            break
-
-        #check up down left right
+        x,y= queue.popleft()
         for i in range(4):
-            if x+dx[i]>=0 and x+dx[i] <m and y+dy[i] >=0 and y+dy[i] <n: 
-                if graph[y+dy[i]][x+dx[i]]>=1:
-                    graph[y+dy[i]][x+dx[i]]= graph[y][x]+1
-                    queue.append((y+dy[i],x+dx[i]))
-                
+            tmp_x=x+dx[i]
+            tmp_y=y+dy[i]
+
+            if tmp_x < 0 or tmp_x >=m or tmp_y<0 or tmp_y >=n:
+                continue
+            
+            
+
+            if graph[tmp_y][tmp_x]==1:
+                graph[tmp_y][tmp_x]=graph[y][x]+1                
+                queue.append((tmp_x,tmp_y))
+            
+            
+
+            
+
+            
+
+    
     
     return graph[n-1][m-1]
 
-    
-    
-    
-
-print(bfs(0,0))
+anw=solution(graph,n,m)
+print(graph)
+print(anw)

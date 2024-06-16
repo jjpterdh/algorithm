@@ -10,18 +10,20 @@ count=0
 temp=[0]*4
 
 # first time
+aa=1
 for i in range(window):
     temp[DNA[password[i]]]+=1
-    aa=1
-    for k in range(4):
-        if temp[k]< condition[k]:
-            aa=0
-            break
-    count+=aa
     
+    
+for k in range(4):
+    if temp[k]< condition[k]:
+        aa=0
+        break
+    
+count+=aa
 
 # second time
-for i in range(1, n):
+for i in range(1, n+1):
     print(temp)
     if i+window>n:
         break
@@ -38,7 +40,5 @@ for i in range(1, n):
     count+=aa
 
 
-    
-    
 
 print(count)
